@@ -1,0 +1,27 @@
+@import url("~leaflet/dist/leaflet.css");
+
+.leaflet-container {
+    height:80vh;
+    width:100vw;
+}
+
+.basemaps-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    height: auto;
+    width: auto;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.basemaps-container select {
+    width: 200px;
+    height: 20px;
+}
+
+.leaflet-div-icon {
+    border: none!important;
+    background: none!important;
+}

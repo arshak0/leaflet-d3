@@ -1,0 +1,246 @@
+$font-family: 'Noto Sans',
+sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+@import './colors';
+@import './d3-chart';
+@import './pulse';
+@import './legend';
+
+body {
+  margin: 0;
+  background-color: $gray-light;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-bottom:50px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.chart_row {
+  display: flex;
+  width: 100%;
+}
+
+.chart {
+  flex-basis: 50%;
+  /*margin-right:40px;*/
+}
+
+#root {
+
+  margin: auto;
+  padding: 0 20px;
+
+  h1 {
+    text-align: center;
+    color: black;
+    font-weight: 400;
+  }
+
+  >div>a {
+    float: right;
+    color: white;
+    font-size: 17px;
+    margin: 12px 5px;
+    font-style: italic;
+    text-decoration: none;
+  }
+}
+
+.card {
+  height: 270px;
+  margin-right: 30px;
+  position: relative;
+  margin-top: 15px;
+  margin-bottom:15px;
+  padding: 15px 10px;
+  box-shadow: 0px 1px 8px 4px rgba(0, 0, 0, 0.2);
+  background-color: #efecec;
+
+  h2 {
+    display: inline-block;
+    margin: 0 20px;
+    font-weight: bold;
+    color:black;
+    text-align:center;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+
+  span.error {
+    font-size: 12px;
+    font-weight: bolder;
+  }
+
+  .chart-container {
+    height: 170px;
+    width: 100%;
+    overflow: hidden;
+
+    &.faded {
+      filter: grayscale(30%);
+      opacity: 0.3;
+      cursor: no-drop;
+    }
+  }
+}
+
+// Text
+span {
+  display: inline-block;
+  margin: 10px;
+}
+
+.status {
+  float: right;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.timestamp {
+  float: right;
+  margin: 10px 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.arrow_charts {
+  display:flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.speedometer_block {
+  margin-left:10px;
+  margin-right:10px;
+  width:100px;
+}
+
+.speedometer {
+  width:100px;
+}
+
+.arrow {
+  height: 40px;
+  position: absolute;
+  margin-left: -60px;
+  margin-top: 35px;
+  transform-origin: 50% 76%;
+}
+
+p.speed {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.arrow_speed {
+  height: 40px;
+  position: absolute;
+  margin-left: -62px;
+  margin-top: 35px;
+  transform-origin: 50% 76%;
+}
+
+.speed_speed {
+  margin: 0;
+  text-align: center;
+}
+
+.arrow_chart {
+  width: 100%;
+  margin-top: 30px;
+  height: 250px;
+  position: relative;
+  margin-bottom: 15px;
+  padding: 20px 10px;
+  box-shadow: 0px 1px 8px 4px rgba(0, 0, 0, 0.2);
+  background-color: #efecec;
+}
+
+span.speed {
+  margin: 0;
+}
+
+span.truck_count {
+  margin: 0;
+}
+
+span.truck_count_speed {
+  margin: 0;
+}
+
+p.speed_p {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+p.truck {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.d3_chart_div {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px 10px;
+  box-shadow: 0px 1px 8px 4px rgba(0, 0, 0, 0.2);
+  background-color: #efecec;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.d3_chart {
+  display: flex;
+  //justify-content: center;
+}
+
+.headline_h2 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  flex-basis: 80%;
+  margin-left: 120px;
+}
+
+.d3_chart_h2 {
+  margin-bottom:0;
+  flex-basis: 80%;
+}
+
+.d3_charts_flex {
+  display: flex;
+  justify-content: center;
+}
+
+.map_container_class_div {
+  padding: 15px 10px;
+  box-shadow: 0px 1px 8px 4px rgba(0, 0, 0, 0.2);
+  background-color: #efecec;
+}
+
+.map_container_class {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+h1.headline {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+.card_option {
+  width:100px;
+}
+
+.headline_div {
+  display: flex;
+  justify-content: center;
+}
