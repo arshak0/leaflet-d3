@@ -1,21 +1,6 @@
 import React from 'react';
 import * as d3 from 'd3';
 
-const temperature_data=[
-  [2.9,3,3,2.9,2.8,2.9,2.8,2.9,2.8,3,2.1,2.2,2.5,2.4,2.8,2.9,3,2.8,2.9,2.8],
-  [2.7,2.8,2.9,3,2.7,2.9,2.8,2.8,2.7,2.7,2.7,2.8,2.9,3,2.9,2.8,2.8,3,2.9,2.9],
-  [2.9,2.9,2.9,2.9,2.9,2.9,2.8,2.9,2.9,2.8,2.9,2.9,2.8,2.9,2.9,2.9,2.9,2.8,2.9,2.9],
-  [3,3,2.8,2.9,2.6,2.9,2.8,2.8,3,2.6,2.6,2.7,2.8,2.7,2.9,2.9,2.9,2.8,2.7,2.8],
-  [2.8,2.8,2.7,2.8,2.9,2.6,2.8,3,2.9,2.8,2.7,2.6,2.9,3,2.7,2.8,2.9,2.8,2.9,2.8],
-  [2.8,2.8,2.9,2.8,2.9,2.8,2.9,2.4,2.1,2.0,2.1,2.4,2.2,2.2,2.2,2.5,2.7,2.8,2.9,2.8],
-  [3,3,3,3,3,2.9,2.9,3,2.9,2.9,2.9,2.9,2.9,3,3,3,3,3,2.9,2.9],
-  [2.8,2.8,2.8,2.8,2.8,2.8,2.7,2.8,2.7,2.8,2.8,2.8,2.7,2.7,2.8,2.8,2.8,2.8,2.7,2.7],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [2.6,2.6,2.7,2.6,2.7,2.6,2.6,2.6,2.7,2.6,2.6,2.7,2.7,2.6,2.6,2.6,2.7,2.7,2.6,2.7]
-];
-
-let for_update=0;
-
 class MultiLineChart extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +21,10 @@ class MultiLineChart extends React.Component {
         xAxisAttribute: "price",
         width: 1200,
         height: 400,
+        temperature_data: [],
+        step: 0,
+        data_help_var_1: 0,
+        data_help_var_2: 0
       }
 
       this.chartRef = React.createRef();
@@ -44,13 +33,18 @@ class MultiLineChart extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+      temperature_data: this.props.temperature_data
+    })
     this.drawChart();
     setInterval(this.updateChart.bind(this), 4000);
   }
 
   updateChart() {
     document.getElementsByClassName('d3_chart')[0].innerHTML="";
-    for_update++;
+    this.setState({
+      step: this.state.step+1
+    })
     this.data_formatting()
     this.drawChart();
   }
@@ -110,22 +104,35 @@ class MultiLineChart extends React.Component {
       date_year=n_date_year;
     }
 
-    //2011-07-01T19:15:28Z
+    //Format: 2011-07-01T19:15:28Z
 
-    let var_for=0;
-    let zzz=0;
+    this.setState({
+      data_help_var_1: 0,
+      data_help_var_2: 0
+    })
 
     for (var i=0;i<10;i++) {
-      var_for=for_update%20;
+      this.setState({
+        data_help_var_1: this.state.step%20
+      })
       for (var j=0;j<10;j++) {
         this.state.data[i].values[j].time=current_time[j]
-        zzz=(var_for+j)%20
-        this.state.data[i].values[j].temperature=temperature_data[i][zzz]
+        this.setState({
+          data_help_var_2: (this.state.data_help_var_1+j)%20
+        })
+        if ( this.state.temperature_data[0] ) {
+          this.state.data[i].values[j].temperature=this.state.temperature_data[i][this.state.data_help_var_2]
+        }
       }
     }
   }
 
   drawChart() {
+
+    this.setState({
+      temperature_data: this.props.temperature_data
+    })
+
     this.data_formatting()
 
     //Chart Drawing
@@ -236,7 +243,7 @@ class MultiLineChart extends React.Component {
       }
 
     render = () => (
-      <p  style={{ margin: '0' }}></p>
+      <div></div>
     )
 }
 

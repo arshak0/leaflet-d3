@@ -13,16 +13,13 @@ class FuelChart extends React.Component {
   componentDidMount() {
     this.intervalId = setInterval(this.timer.bind(this), 1500);
     this.setState({
-      fuel_array: this.props.fuel_array
+      fuel_array: this.props.fuel_array,
+      sensorId: this.props.sensorId
     });
   }
 
-  componentWillUnmount(){
-    clearInterval(this.intervalId);
-  }
-
   truck_count_func() {
-    document.getElementsByClassName('truck_count')[this.props.sensorId-1].innerHTML=this.props.sensorId
+    document.getElementsByClassName('truck_count')[this.props.sensorId-1].innerHTML=this.state.sensorId
   }
 
   timer() {
@@ -32,7 +29,9 @@ class FuelChart extends React.Component {
     
     
     if(this.state.fuel_array[this.props.sensorId-1][this.state.currentCount] == undefined) {
-      this.state.currentCount=0
+      this.setState({
+        currentCount: 0
+      })
     }
 
     var new_fuel=this.state.fuel_array[this.props.sensorId-1][this.state.currentCount];
@@ -47,7 +46,6 @@ class FuelChart extends React.Component {
     }
 
     this.truck_count_func()
-    
   }
   
     render = () => (
