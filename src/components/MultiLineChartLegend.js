@@ -5,12 +5,10 @@ class MultiLineChartLegend extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        { name: "Truck 1" }, { name: "Truck 2" }, { name: "Truck 3" }, { name: "Truck 4" }, { name: "Truck 5" },
-        { name: "Truck 6" }, { name: "Truck 7" }, { name: "Truck 8" }, { name: "Truck 9" }, { name: "Truck 10" }
-        ],
-        width: 1200,
-        height: 400,
+      data: [ ],
+      width: 1200,
+      height: 400,
+      ...props
       }
 
       this.chartRef = React.createRef();

@@ -5,18 +5,7 @@ class MultiLineChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        {   name: "Truck 1", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 2", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 3", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 4", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 5", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 6", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 7", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 8", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 9", values: [{},{},{},{},{},{},{},{},{},{}]   },
-        {   name: "Truck 10", values: [{},{},{},{},{},{},{},{},{},{}]   }
-        ],
+      data: [],
         yAxisAttribute: "date",
         xAxisAttribute: "price",
         width: 1200,
@@ -24,7 +13,8 @@ class MultiLineChart extends React.Component {
         temperature_data: [],
         step: 0,
         data_help_var_1: 0,
-        data_help_var_2: 0
+        data_help_var_2: 0,
+        ...props
       }
 
       this.chartRef = React.createRef();
@@ -33,9 +23,6 @@ class MultiLineChart extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      temperature_data: this.props.temperature_data
-    })
     this.drawChart();
     setInterval(this.updateChart.bind(this), 4000);
   }

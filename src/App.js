@@ -47,6 +47,19 @@ const temperature_data=[
   [2.6,2.6,2.7,2.6,2.7,2.6,2.6,2.6,2.7,2.6,2.6,2.7,2.7,2.6,2.6,2.6,2.7,2.7,2.6,2.7]
 ];
 
+const data_for_d3 = [
+  {   name: "Truck 1", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 2", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 3", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 4", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 5", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 6", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 7", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 8", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 9", values: [{},{},{},{},{},{},{},{},{},{}]   },
+  {   name: "Truck 10", values: [{},{},{},{},{},{},{},{},{},{}]   }
+  ]
+
 class App extends React.Component {
   render() {
     return (
@@ -73,10 +86,10 @@ class App extends React.Component {
             </div>
             <div className="d3_charts_flex" >
               <div className="d3_chart">
-                <MultiLineChart temperature_data={temperature_data}/>
+                <MultiLineChart temperature_data={temperature_data} data={data_for_d3}/>
               </div>
               <div className="d3_chart_legend">
-                <MultiLineChartLegend />
+                <MultiLineChartLegend data={data_for_d3}/>
               </div>
             </div>
           </div>
