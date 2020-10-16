@@ -23,7 +23,7 @@ class SpeedChart extends React.Component {
       currentCount: this.state.currentCount + 1
     })
     
-    if(this.state.speed_array[this.props.sensorId-1][this.state.currentCount] == undefined) {
+    if(this.state.speed_array[this.props.sensorId-1][this.state.currentCount] === undefined) {
       this.setState({
         currentCount: 0
       })
@@ -33,8 +33,8 @@ class SpeedChart extends React.Component {
     render = () => (
         <div className="speedometer_block">
           <p className={'truck'}>Truck <span className={'truck_count_speed'}>{this.state.sensorId}</span></p>
-          <img className="speedometer" src="/speedometer.png"></img>
-          <img className="arrow_speed" src="/arrow_speed.png" style={
+          <img className="speedometer" src="/speedometer.png" alt=""></img>
+          <img className="arrow_speed" src="/arrow_speed.png" alt="" style={
             this.state.speed_array[0] ? 
             {transform: 'rotate('+((this.state.speed_array[this.state.sensorId-1][this.state.currentCount]*3-half_speedometer)/half_speedometer)*114+'deg)'}
             : {transform: 'rotate(0deg)'}

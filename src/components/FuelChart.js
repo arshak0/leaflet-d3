@@ -23,7 +23,7 @@ class FuelChart extends React.Component {
       currentCount: this.state.currentCount + 1
     })
     
-    if(this.state.fuel_array[this.props.sensorId-1][this.state.currentCount] == undefined) {
+    if(this.state.fuel_array[this.props.sensorId-1][this.state.currentCount] === undefined) {
       this.setState({
         currentCount: 0
       })
@@ -33,8 +33,8 @@ class FuelChart extends React.Component {
     render = () => (
         <div className="speedometer_block">
           <p className={'truck'}>Truck <span className={'truck_count'}>{this.state.sensorId}</span></p>
-          <img className="speedometer" src="/fuel_consumption.png"></img>
-          <img className="arrow" src="/arrow_speed.png" style={
+          <img className="speedometer" src="/fuel_consumption.png" alt=""></img>
+          <img className="arrow" src="/arrow_speed.png" alt="" style={
             this.state.fuel_array[0] ? 
             {transform: 'rotate('+((this.state.fuel_array[this.state.sensorId-1][this.state.currentCount]-half_speedometer)/half_speedometer)*119+'deg)'}
             : {transform: 'rotate(0deg)'}

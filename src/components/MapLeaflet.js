@@ -1,5 +1,4 @@
 import React from 'react';
-import L from 'leaflet';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import Basemap from './Basemaps';
 import {  iconPerson  } from './Icon';

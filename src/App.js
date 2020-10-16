@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './styles/main.scss';
 import MultiLineChart from "./components/MultiLineChart";
@@ -7,7 +6,6 @@ import FuelChart from './components/FuelChart';
 import SpeedChart from './components/SpeedChart';
 import MapLeaflet from './components/MapLeaflet';
 import MultiLineChartLegend from './components/MultiLineChartLegend';
-import './data_for_components.js';
 
 const array_for_fuel=[
   [38,38,37,36,38,32,25,21,20,22,21,20,19,19,19,20,17,20,22,24,27,28,30,29,31,30,30,29,29,27,23,22,20,18,16,14,12,10,8,6,5,6,5,6,7,6,6,7,7,5,8,10,12,16,17,19,21,22,24,26,24,24,25,25,23,27,28,32,37],
@@ -61,6 +59,8 @@ const data_for_d3 = [
   {   name: "Truck 10", values: [{},{},{},{},{},{},{},{},{},{}]   }
 ];
 
+const array_for_sensorid = [1,2,3,4,5,6,7,8,9,10];
+
 class App extends React.Component {
   render() {
     return (
@@ -107,7 +107,7 @@ class App extends React.Component {
               <span className="status success"><i className="pulse"></i>Connected</span>
             </div>
             <div className="arrow_charts">
-              { [1,2,3,4,5,6,7,8,9,10].map( index => <SpeedChart speed_array={array_for_speed} sensorId={index} />  ) }
+              { array_for_sensorid.map( index => <SpeedChart speed_array={array_for_speed} sensorId={index} />  ) }
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ class App extends React.Component {
               <span className="status success"><i className="pulse"></i>Connected</span>
             </div>
             <div className="arrow_charts">
-            { [1,2,3,4,5,6,7,8,9,10].map( index => <FuelChart fuel_array={array_for_fuel} sensorId={index} />  ) }
+            { array_for_sensorid.map( index => <FuelChart fuel_array={array_for_fuel} sensorId={index} />  ) }
             </div>
           </div>
         </div>
