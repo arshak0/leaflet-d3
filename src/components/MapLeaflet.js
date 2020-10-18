@@ -50,7 +50,7 @@ class MapLeaflet extends React.Component {
         for ( let ii=0; ii<10; ii++ ) {
             this.state.data[ii][0] = this.state.all_data[ii][this.state.currentCount*2]
             this.state.data[ii][1] = this.state.all_data[ii][this.state.currentCount*2+1]
-        }
+        }s
         this.setState({
             data: this.state.data
         })
