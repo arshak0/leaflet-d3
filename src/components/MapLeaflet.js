@@ -14,11 +14,12 @@ class MapLeaflet extends React.Component {
             data: [],
             all_data: [],
             array_for_markers: [],
-            zoom: 5,
+            zoom: 8,
             basemap: 'osm',
             abc: 0,
             trucks: ['Truck 1','Truck 2','Truck 3','Truck 4','Truck 5','Truck 6','Truck 7','Truck 8','Truck 9','Truck 10'],
-            currentCount: 0,
+            currentCount: 1,
+            currentCountHelp: 0,
             ...props
         };
         this.onBMChange=this.onBMChange.bind(this);
@@ -31,33 +32,43 @@ class MapLeaflet extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.updateMarkers.bind(this), 5000);
+        setInterval(this.updateMarkers.bind(this), 500);
     }
     
     updateMarkers() {
         this.setState({
-            currentCount: this.state.currentCount + 1
-          })
-          
-          if(this.state.all_data[0][this.state.currentCount*2] === undefined) {
+            currentCountHelp: this.state.currentCountHelp + 0.005
+        })
+
+        if(this.state.currentCountHelp > 1) {
             this.setState({
-              currentCount: 0
+                currentCountHelp: 0
             })
-          }
-          console.log(this.state.data);
-          console.log(this.state.all_data);
+
+            this.setState({
+                currentCount: this.state.currentCount + 1,
+            })
+            
+            if(this.state.all_data[0][this.state.currentCount*2] === undefined) {
+                this.setState({
+                    currentCount: 0
+                })
+            }
+        }
 
         for ( let ii=0; ii<10; ii++ ) {
-            this.state.data[ii][0] = this.state.all_data[ii][this.state.currentCount*2]
-            this.state.data[ii][1] = this.state.all_data[ii][this.state.currentCount*2+1]
+            this.state.data[ii][0] = this.state.all_data[ii][(this.state.currentCount-1)*2] + ( (this.state.currentCountHelp * (this.state.all_data[ii][this.state.currentCount*2] - this.state.all_data[ii][((this.state.currentCount-1)*2)] ) ) );
+            this.state.data[ii][1] = this.state.all_data[ii][((this.state.currentCount-1)*2)+1] + ( (this.state.currentCountHelp * (this.state.all_data[ii][this.state.currentCount*2+1] - this.state.all_data[ii][((this.state.currentCount-1)*2)+1] ) ) );
         }
+
         this.setState({
             data: this.state.data
         })
     }
 
     render () {
-        var center = [40.72, -99.457];
+        //var center = [40.72, -99.457];
+        var center = [49.043835 , -122.271505];
 
         const basemapsDict = {
             osm: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
