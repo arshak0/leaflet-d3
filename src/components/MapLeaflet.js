@@ -14,7 +14,11 @@ class MapLeaflet extends React.Component {
             data: [],
             all_data: [],
             array_for_markers: [],
+<<<<<<< HEAD
+            zoom: 5,
+=======
             zoom: 8,
+>>>>>>> b5bd2fe9613798f05dc279d528c892bf30848158
             basemap: 'osm',
             abc: 0,
             trucks: ['Truck 1','Truck 2','Truck 3','Truck 4','Truck 5','Truck 6','Truck 7','Truck 8','Truck 9','Truck 10'],
@@ -67,8 +71,13 @@ class MapLeaflet extends React.Component {
     }
 
     render () {
+<<<<<<< HEAD
+        var center = [40.72, -99.457];
+        //var center = [49.043835 , -122.271505];
+=======
         //var center = [40.72, -99.457];
         var center = [49.043835 , -122.271505];
+>>>>>>> b5bd2fe9613798f05dc279d528c892bf30848158
 
         const basemapsDict = {
             osm: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
