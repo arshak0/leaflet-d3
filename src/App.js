@@ -59,6 +59,12 @@ const data_for_d3 = [
   {   name: "Truck 10", values: [{},{},{},{},{},{},{},{},{},{}]   }
 ];
 
+const data_for_map = [[40.72,-99.45],[45.55,-122.78],[37.70,-122.78],[32.71,-117.11],[30.59,-97.80],[36.66,-89.63],[41.79,-88.05],
+[50.36,-104.92],[41.20,-81.54],[28.46,-82.6]];
+
+const all_data_for_map = [[40.72,-99.45,38.5,-97,40.72,-99.45],[45.55,-122.78],[37.70,-122.78],[32.71,-117.11],[30.59,-97.80],[36.66,-89.63],[41.79,-88.05],
+[50.36,-104.92],[41.20,-81.54],[28.46,-82.6]];
+
 const array_for_sensorid = [1,2,3,4,5,6,7,8,9,10];
 
 class App extends React.Component {
@@ -74,7 +80,7 @@ class App extends React.Component {
           <span className="status success"><i className="pulse"></i>Connected</span>
         </div>
         <div id="map-container" className="map_container_class">
-          <MapLeaflet />
+          <MapLeaflet data={data_for_map} array_for_markers={array_for_sensorid} all_data={all_data_for_map}/>
         </div>
       </div>
       
