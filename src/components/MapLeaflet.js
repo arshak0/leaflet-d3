@@ -31,7 +31,7 @@ class MapLeaflet extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.updateMarkers.bind(this), 1000);
+        setInterval(this.updateMarkers.bind(this), 5000);
     }
     
     updateMarkers() {
