@@ -59,7 +59,7 @@ class MultiLineChart extends React.Component {
       .range([0, width-margin]);
     
     var yScale = d3.scaleLinear()
-      .domain([2, d3.max(this.state.data[0].values, d => d.temperature+0.1)])
+      .domain([1.5, d3.max(this.state.data[0].values, d => d.temperature+0.1)])
       .range([height-margin, 0]);
     
     var color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -92,7 +92,7 @@ class MultiLineChart extends React.Component {
     
     /* Add Axis into SVG */
     var xAxis = d3.axisBottom(xScale).ticks(5);
-    var yAxis = d3.axisLeft(yScale).ticks(5);
+    var yAxis = d3.axisLeft(yScale).ticks(10);
     
     svg.append("g")
       .attr("class", "x axis")
